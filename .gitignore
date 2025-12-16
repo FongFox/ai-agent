@@ -12,3 +12,6 @@ venv
 
 # IDE, Code Editor
 .idea
+
+# (dev or non-dev) environment
+.env
