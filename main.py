@@ -1,3 +1,4 @@
+import argparse
 import os
 
 from dotenv import load_dotenv
@@ -12,7 +13,11 @@ def main():
             "GEMINI_API_KEY not found in environment variables or .env file"
         )
 
-    user_prompt = "Why is Boot.dev such a great place to learn backend development? Use one paragraph maximum."
+    parser = argparse.ArgumentParser(description="Chatbot")
+    parser.add_argument("user_prompt", type=str, help="User prompt")
+    args = parser.parse_args()
+
+    user_prompt = args.user_prompt
     client = genai.Client(api_key=api_key)
     response = client.models.generate_content(
         model="gemini-2.5-flash",
